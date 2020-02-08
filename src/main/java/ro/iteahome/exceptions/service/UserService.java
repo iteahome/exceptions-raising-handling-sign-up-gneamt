@@ -21,14 +21,12 @@ public class UserService {
 
     public void signUp(User newUser) throws BikeSharingException {
 
-        /*for (User user: userDao.readAllUsers()) {
+        for (User user: userDao.readAllUsers()) {
             if (newUser.getEmail().equals(user.getEmail())) {
-                break;
+                throw new BikeSharingUserAlreadyExistsException();
             }
         }
 
-         */
         userDao.writeUser(newUser);
-        //throw new BikeSharingUserAlreadyExistsException();
     }
 }
