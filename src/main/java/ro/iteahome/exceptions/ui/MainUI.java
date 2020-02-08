@@ -1,13 +1,15 @@
 package ro.iteahome.exceptions.ui;
 
+import java.util.Scanner;
+
 public class MainUI {
 
     private LoginUI loginUI = new LoginUI();
+    private SignUpUI signUpUI = new SignUpUI();
 
-    //to do
-    //private SignUpUI signUpUI
 
     public void start() {
-        loginUI.displayLogin();
+        //loginUI.displayLogin();
+        signUpUI.displaySignUp();
     }
 }

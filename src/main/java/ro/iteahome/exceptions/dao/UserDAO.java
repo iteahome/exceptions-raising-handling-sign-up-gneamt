@@ -4,11 +4,10 @@ import ro.iteahome.exceptions.exception.BikeSharingFileException;
 import ro.iteahome.exceptions.exception.BikeSharingTechnicalException;
 import ro.iteahome.exceptions.model.User;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class UserDAO {
 
@@ -24,5 +23,19 @@ public class UserDAO {
             throw new BikeSharingFileException("Error reading users", e);
         }
         return userList;
+    }
+
+    public void writeUser(User user) throws BikeSharingTechnicalException {
+
+        try (FileWriter writer = new FileWriter(USERS_FILE, true);
+             BufferedWriter bw = new BufferedWriter(writer)) {
+            bw.newLine();
+            bw.write(user.getEmail());
+            bw.write(";");
+            bw.write(user.getPassword());
+
+        } catch (IOException e) {
+            throw new BikeSharingFileException("Error writing user to file", e);
+        }
     }
 }

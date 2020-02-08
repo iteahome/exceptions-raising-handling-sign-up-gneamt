@@ -2,6 +2,7 @@ package ro.iteahome.exceptions.service;
 
 import ro.iteahome.exceptions.dao.UserDAO;
 import ro.iteahome.exceptions.exception.BikeSharingException;
+import ro.iteahome.exceptions.exception.BikeSharingUserAlreadyExistsException;
 import ro.iteahome.exceptions.exception.BikeSharingWrongCredentialsException;
 import ro.iteahome.exceptions.model.User;
 
@@ -16,5 +17,18 @@ public class UserService {
             }
         }
         throw new BikeSharingWrongCredentialsException();
+    }
+
+    public void signUp(User newUser) throws BikeSharingException {
+
+        /*for (User user: userDao.readAllUsers()) {
+            if (newUser.getEmail().equals(user.getEmail())) {
+                break;
+            }
+        }
+
+         */
+        userDao.writeUser(newUser);
+        //throw new BikeSharingUserAlreadyExistsException();
     }
 }
